@@ -29,7 +29,7 @@ export class CreateTransaction1594331306978 implements MigrationInterface {
             },
             {
               name: 'value',
-              type: 'numeric',
+              type: 'decimal',
             },
             {
               name: 'created_at',
