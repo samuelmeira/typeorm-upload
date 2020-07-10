@@ -12,19 +12,19 @@ interface Balance {
 class TransactionsRepository extends Repository<Transaction> {
   public async getBalance(): Promise<Balance> {
     const transactions = await this.find();
-    const incomeValues =  transactions.map(transaction => (
-      transaction.type === 'income' ? transaction.value : 0
+    const incomeValues = transactions.map(transaction => (
+      transaction.type === 'income' ?  Number(transaction.value) : 0
     ));
 
-    const incomeValue = incomeValues.reduce((previus, currentValue) => (
+    const incomeValue = incomeValues.reduce((previus: number, currentValue: number) => (
       previus + currentValue
     ), 0);
 
     const outcomeValues = transactions.map(transaction => (
-      transaction.type === 'outcome' ? transaction.value : 0
+      transaction.type === 'outcome' ? Number(transaction.value) : 0
     ));
 
-    const outcomeValue = outcomeValues.reduce((previus, currentValue) => (
+    const outcomeValue = outcomeValues.reduce((previus: number, currentValue: number) => (
       previus + currentValue
     ), 0);
 
